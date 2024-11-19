@@ -9,4 +9,11 @@ const TProduct = PropTypes.shape({
   name: PropTypes.string.isRequired,
 });
 
-export { TProduct, TCategory };
+const TSearchForm = PropTypes.shape({
+  filterText: PropTypes.string.isRequired, // 검색어; required
+  onFilterTextChange: PropTypes.func, // 검색어 변경 함수; optional
+  inStockOnly: PropTypes.bool.isRequired, // 체크박스 값; required
+  onInStockOnlyChange: PropTypes.func, // 체크박스 값 변경 함수; optional
+});
+
+export { TProduct, TCategory, TSearchForm };

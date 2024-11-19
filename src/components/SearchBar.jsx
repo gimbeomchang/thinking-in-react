@@ -1,10 +1,26 @@
-export function SearchBar() {
+import { TSearchForm } from "../typings";
+
+export function SearchBar({
+  search: { filterText, onFilterTextChange, inStockOnly, onInStockOnlyChange },
+}) {
   return (
     <form>
-      <input type="text" placeholder="Search..." />
+      <input
+        type="text"
+        value={filterText}
+        onChange={(e) => onFilterTextChange(e.target.value)}
+        placeholder="Search..."
+      />
       <label>
-        <input type="checkbox" /> Only show products in stock
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={(e) => onInStockOnlyChange(e.target.checked)}
+        />{" "}
+        Only show products in stock
       </label>
     </form>
   );
 }
+
+SearchBar.propTypes = { search: TSearchForm.isRequired };
